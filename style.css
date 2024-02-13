@@ -1,0 +1,340 @@
+@font-face {
+  font-family: Wagon;
+  font-weight: 200;
+  font-style: normal;
+  src: url("../assets/fonts/Wagon-ExtraLight.otf") format("opentype");
+}
+@font-face {
+  font-family: Wagon;
+  font-weight: 200;
+  font-style: italic;
+  src: url("../assets/fonts/Wagon-ExtraLightItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: PPEditorialNew;
+  font-weight: 200;
+  font-style: normal;
+  src: url("../assets/fonts/PPEditorialNew-Ultralight.otf") format("opentype");
+}
+@font-face {
+  font-family: PPEditorialNew;
+  font-weight: 200;
+  font-style: italic;
+  src: url("../assets/fonts/PPEditorialNew-UltralightItalic.otf") format("opentype");
+}
+
+:root {
+  --primary: #fff;
+  --background: #000;
+  --ternary: rgba(255, 255, 255, .18);
+
+  --tone-1: #FC5867;
+  --tone-2: #FDD41E;
+  --tone-3: #30BD52;
+  --tone-4: #5259B3;
+
+  color: var(--primary);
+  font-size: 14px;
+  font-family: var(--font-family-body);
+  font-style: italic;
+  letter-spacing: 1px;
+
+  --font-family-body: PPEditorialNew, "Times New Roman", Times, serif;
+  --font-family-display: Wagon, "Times New Roman", Times, serif;
+
+  --font-size-body-secondary: .88rem;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background-size: cover;
+}
+
+#gradient-canvas {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -10;
+  --gradient-color-1: var(--tone-1); 
+  --gradient-color-2: var(--tone-2); 
+  --gradient-color-3: var(--tone-3); 
+  --gradient-color-4: var(--tone-4);
+  --gradient-color-5: #1c1c1c;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.noise-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -10;
+  background-image: url(../assets/images/noise.svg);
+  cursor: pointer;
+  pointer-events: none;
+  background-repeat: repeat;
+  background-size: auto 10%;
+  opacity: .4;
+  mix-blend-mode: overlay;
+}
+/*** GLOBAL SCREENS ***/
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/*** SCREEN: Start ***/
+.start-screen {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: var(--start-primary);
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+.start-screen .button {
+  margin: auto auto 4rem auto;
+}
+
+h1 {
+  position: relative;
+  display: flex;
+  text-align: center;
+  font-size: 4rem;
+  flex-direction: column;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-weight: 200;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 2rem;
+}
+h1 > span:first-child {
+  font-size: 2.4rem;
+}
+.result-screen h1 > span:last-child {
+  font-size: 2.4rem;
+}
+
+.result-screen {
+  padding-bottom: 4rem;
+}
+
+/*** SCREEN: Game ***/
+.game-screen {
+  padding-bottom: 3.5rem;
+}
+.category-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 32px;
+  background-color: var(--background);
+  bottom: 0;
+  left: 0;
+
+  font-size: var(--font-size-body-secondary);
+  transition: .3s background-color;
+}
+
+.question-box,
+.info-box,
+.welcome-box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 600px;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
+  color: var(--primary);
+  font-style: normal;
+}
+
+.info-col {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: var(--font-size-body-secondary);
+}
+
+.info-box img {
+  width: 70%;
+  margin: .5rem;
+  max-width: 160px;
+}
+
+.welcome-box p,
+.info-box p {
+  margin: 1rem 0;
+  opacity: .87;
+  font-size: 0.9rem;
+}
+
+.welcome-box {
+  padding: 2rem;
+}
+
+h2.city-name {
+  font-size: 2rem;
+  font-weight: 200;
+  font-style: normal;
+  margin: 0;
+}
+
+h2.index {
+  width: 6rem;
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 0;
+  margin-right: 1.5rem;
+  transform: translateY(-6px);
+  letter-spacing: 0.5px;
+  text-align: center;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  box-shadow: 0 0 0 2px var(--primary);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  padding-top: 12px;
+}
+h4.title {
+  font-size: 1rem;
+  font-weight: 200;
+  margin: 0;
+  width: 100%;
+}
+
+.progression-bar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 4px;
+}
+.progression-bar::after,
+.progression-bar > .fill {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: inherit;
+  background-color: var(--primary);
+}
+.progression-bar::after {
+  opacity: .24;
+}
+.progression-bar > .fill {
+  transition: width 0.7s ease-in-out;
+}
+
+ul {
+  padding: 0;
+  width: 100%;
+  margin: .8rem auto;
+  max-width: 600px;
+}
+li {
+  display: block;
+  list-style-type: none;
+  width: 100%;
+  margin: .8rem 0;
+  cursor: pointer;
+  font-size: var(--font-size-body-secondary);
+  padding: 1rem;
+  box-sizing: border-box;
+
+  box-shadow: 0 0 0 1px var(--primary);
+  color: var(--primary);
+  opacity: 0.68;
+  letter-spacing: inherit;
+  transform: scale(.95);
+
+  transition: .3s;
+} 
+li:hover:not(.selected),
+li:focus:not(.selected) {
+  box-shadow: 0 0 0 1px var(--primary);
+  opacity: .86;
+}
+li.selected {
+  background-color: var(--ternary);
+  box-shadow: 0 0 0 .5px var(--primary);
+  opacity: 1;
+  transform: scale(1);
+}
+li > a {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  transition: inherit;
+  text-decoration-line: none;
+  cursor: inherit;
+}
+
+.button {
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  height: 40px;
+  padding: 1rem;
+
+  flex-shrink: 0;
+  align-self: flex-end;
+
+  cursor: pointer;
+
+  text-transform: uppercase;
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  font-weight: 200;
+  font-style: italic;
+  letter-spacing: inherit;
+  
+  user-select: none;
+  color: var(--primary);
+  background-color: var(--ternary);
+  box-shadow: 0 0 0 .5px var(--primary);
+  border: 0;
+  box-sizing: border-box;
+
+  transition: .3s;
+}
+.button:hover,
+.button:focus {
+  transform: scale(1.1);
+}
+
+/*** SCREEN: Calculate ***/
+.calculating-screen {
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  letter-spacing: inherit;
+}
